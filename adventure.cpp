@@ -68,6 +68,7 @@ int main()
   place professors_office("Professor's Office");
 
   //YOU GOT BIG HANDS BOY
+  //But I also have a kind heart
   can_go(mccormick,south,bakeless);
   can_go(bakeless,north,mccormick);
   can_go(bakeless,up,computer_lab);
