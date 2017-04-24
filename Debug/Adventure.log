@@ -1,28 +1,25 @@
-﻿Build started 4/18/2017 9:38:46 PM.
-     1>Project "C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Adventure.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/24/2017 4:34:00 PM.
+     1>Project "P:\Adventure\Adventure.vcxproj" on node 2 (ClCompile target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt adventure.cpp
          adventure.cpp
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\place.h(22): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\place.h(24): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\person.h(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\person.h(71): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\werewolf.h(20): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(47): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(59): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(98): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>p:\adventure\place.h(22): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\place.h(24): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\person.h(38): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\person.h(71): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\werewolf.h(20): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\adventure.cpp(47): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\adventure.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+     1>p:\adventure\adventure.cpp(99): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254) : see declaration of 'gets'
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(99): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>p:\adventure\adventure.cpp(100): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(204) : see declaration of 'strtok'
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(105): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>p:\adventure\adventure.cpp(106): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(204) : see declaration of 'strtok'
-     1>c:\users\jayne\desktop\inheritance\adventure\adventure\adventure.cpp(109): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>p:\adventure\adventure.cpp(110): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(204) : see declaration of 'strtok'
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Debug\Adventure.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Debug\Adventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Debug\Adventure.lib" /MACHINE:X86 Debug\adventure.obj
-         Adventure.vcxproj -> C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Debug\Adventure.exe
-     1>Done Building Project "C:\Users\Jayne\Desktop\Inheritance\Adventure\Adventure\Adventure.vcxproj" (Build target(s)).
+     1>Done Building Project "P:\Adventure\Adventure.vcxproj" (ClCompile target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.94
+Time Elapsed 00:00:01.18
