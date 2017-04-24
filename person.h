@@ -7,7 +7,7 @@ class person : public named_object
     place* get_location() const {return location;}
     vector<thing*> get_possessions() const {return possessions;}
     void look() const;
-	void inventory() const;
+	void inventory() const {};
     virtual string get_greeting() const {return greeting;}
     virtual void greet_others();
     virtual void greeted_by(person *persn);
@@ -40,19 +40,6 @@ void person::look() const
          cout << (location->get_things())[i]->get_name() << " ";
   }
   cout << endl;
-}
-
-//created by Danny
-void person::inventory() const 
-{
-	int inv_size = possessions.size();
-	if (inv_size == 0)
-		cout << "You have nothing, if that's the case." << endl;
-	else
-		for (int i = 0; i < possessions.size(); ++i)
-		{
-			cout << get_name() << " has " << possessions[i] << endl;
-		}
 }
 
 void announce_move(string name, place *from, place *to)
