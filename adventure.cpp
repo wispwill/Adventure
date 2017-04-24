@@ -64,29 +64,40 @@ int main()
 { place mccormick("McCormick Hall Lobby");
   place bakeless("Bakeless Hall Lobby");
   place computer_lab("Computer Lab");
-  place basement("Basement");
+  place bakeless_basement("Bakeless Basement");
   place professors_office("Professor's Office");
+  //created by Danny
+  place computer_lab_roof("Computer Lab Roof");
+  place professors_office_roof("Professor's Office Roof");
 
   can_go(mccormick,south,bakeless);
   can_go(bakeless,north,mccormick);
   can_go(bakeless,up,computer_lab);
   can_go(computer_lab,down,bakeless);
-  can_go(bakeless,down,basement);
-  can_go(basement,up,bakeless);
+  can_go(bakeless, down, bakeless_basement);
+  can_go(bakeless_basement, up, bakeless);
   can_go(mccormick,up,professors_office);
   can_go(professors_office,down,mccormick);
+  //created by Danny
+  can_go(computer_lab, up, computer_lab_roof);
+  can_go(computer_lab_roof, down, computer_lab);
+  can_go(professors_office, up, professors_office_roof);
+  can_go(professors_office_roof, up, professors_office);
 
-  person me("Erik",mccormick,10000);
+  person me("Laura and Danny",mccormick,10000);
   install_person(me);
   person veronica("Veronica",mccormick,2);
   install_person(veronica);
-  werewolf cujo("Cujo",basement,3);
+  werewolf cujo("Cujo", bakeless_basement, 3);
   install_person(cujo);
 
   thing disk("disk");
   install_thing(disk,computer_lab);
   thing beer("beer");
   install_thing(beer,professors_office);
+  //created by Danny
+  thing jetpack("jetpack");
+  install_thing(jetpack, bakeless_basement);
 
   //main loop
   char line[99];
@@ -110,7 +121,9 @@ int main()
        me.take(string_to_thing(arg));
      }
 	 else if (command == "wait")
-       cout << "Time passes" << endl;
+		 cout << "Time passes" << endl;
+	 else if (command == "inventory")
+		 me.inventory();
      else
        cout << "Unknown command (ignored)." << endl;
      clock();
