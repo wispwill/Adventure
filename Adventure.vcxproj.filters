@@ -35,5 +35,8 @@
     <ClInclude Include="werewolf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="partyanimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

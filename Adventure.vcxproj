@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="named_obj.h" />
+    <ClInclude Include="partyanimal.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="place.h" />
     <ClInclude Include="thing.h" />

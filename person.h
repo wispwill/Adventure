@@ -1,4 +1,5 @@
 // a person has a collection of possessions and can look, take things, go in a direction, etc.
+#include<iterator>
 class person : public named_object
 { public:
     person(string nm, place &loc, int thresh)
@@ -7,7 +8,7 @@ class person : public named_object
     place* get_location() const {return location;}
     vector<thing*> get_possessions() const {return possessions;}
     void look() const;
-	void inventory() const {};
+	void inventory() const;
     virtual string get_greeting() const {return greeting;}
     virtual void greet_others();
     virtual void greeted_by(person *persn);
@@ -19,6 +20,11 @@ class person : public named_object
     void clock();
     virtual void act();
     kind get_kind() {return person_obj;}
+	//added by laura
+	bool same_room(string name) const;
+	bool has_thing(string name) const;
+	thing* get_thing(string name) const;
+	//
   protected:
     static const string greeting;
     int restlessness;
@@ -66,7 +72,8 @@ void person::go(direction dir)
 }
 
 void person::greet_others()
-{ string name;
+{ 
+  string name;
   named_object *pobj;
   for (int i=0; i<location->get_things().size(); i++)
   { pobj =(location->get_things())[i];
@@ -79,18 +86,39 @@ void person::greet_others()
 }
 
 void person::greeted_by(person *persn)
-{ cout << get_name() << " says" << get_greeting() << persn->get_name() << endl;
+{ 
+  cout << get_name() << " says" << get_greeting() << persn->get_name() << endl;
 }
 
 void person::take(thing *thng)
-{ location->remove_thing(thng);
+{ 
+  location->remove_thing(thng);
   possessions.push_back(thng);
   thng->change_owner(this);
   cout << thng->get_name() << " taken by " << get_name() << endl;
 }
 
+//created by Danny
+void person::drop(thing *thng)
+{
+	if (thng != nullptr)
+	{
+		int i = 0;
+		vector<thing*>::iterator itr = possessions.begin();
+		while (*itr != thng && itr != possessions.end())
+			itr++;
+		possessions.erase(itr);
+		location->add_thing(thng);
+		cout << thng->get_name() << " dropped by " << this->get_name() << endl;
+	}
+	else
+		cout << "You don't have that." << endl;
+}
+//
+
 void person::go_look(direction dir)
-{ if ((location->get_neighbors())[dir] == NULL)
+{ 
+  if ((location->get_neighbors())[dir] == NULL)
      cout << "You can't go " << direction_to_string(dir) << endl;
   else
   {  move_to((location->get_neighbors())[dir]);
@@ -100,7 +128,8 @@ void person::go_look(direction dir)
 }
 
 void person::clock()
-{ restlessness++;
+{ 
+  restlessness++;
   if (restlessness >= threshold)
   { restlessness = 0;
     act();
@@ -108,10 +137,51 @@ void person::clock()
 }
 
 void person::act()
-{ int num_exits = location->get_exits().size();
+{ 
+  int num_exits = location->get_exits().size();
   if (num_exits == 0)
     return;
   int index = rand() % num_exits; // pick a random exit
   direction dir = (location->get_exits())[index];
   go(dir);
 }
+
+//created by Laura
+void person::inventory() const
+{
+	cout << "You have ";
+
+	if (possessions.size() == 0)
+		cout << "nothing.";
+	else
+		for (int i = 0; i < possessions.size(); i++)
+			cout << possessions[i]->get_name() << " ";
+
+	cout << endl;
+}
+
+bool person::same_room(string name) const
+{
+	return location->contains_thing(name);
+}
+
+bool person::has_thing(string name) const
+{
+	for (int i = 0; i < possessions.size(); i++)
+	{
+		if (possessions[i]->get_name() == name)
+			return true;
+		return false;
+	}
+}
+
+thing* person::get_thing(string name) const
+{
+	for (int i = 0; i < possessions.size(); i++)
+	{
+		if (possessions[i]->get_name() == name)
+			return possessions[i];
+	}
+	return nullptr;
+}
+//
