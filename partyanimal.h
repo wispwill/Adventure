@@ -12,12 +12,12 @@ void partyanimal::eat_person(person *persn)
 {
 	if (persn->has_thing("beer"))//check if person has beer
 	{
-		cout << get_name() << "says \"OOH, IS THAT BEER?\"" << endl;
+		cout << get_name() << " says \"OOH, IS THAT BEER?\"" << endl;
 		//drop beer
 		persn->drop(persn->get_thing("beer"));
 		//party animal picks it up
 		take(persn->get_thing("beer"));
-		cout << get_name() << "takes your beer and leaves you alone." << endl;	
+		cout << get_name() << " takes your beer and leaves you alone." << endl;	
 	}		
 	else
 	{

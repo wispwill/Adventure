@@ -71,13 +71,6 @@ int main()
   place bakeless_roof("Bakeless Roof");
   place professors_office_roof("Computer Lab Roof");
   place quad("Quad");
-  
-  
-  //chaNge threshold for spuds
-  //Then modify the werewolf class so that a werewolf won’t leave the building it’s in or the quad/pit area
-  //Do this by overriding the act method it would normally inherit from Person.
-  //Instead of randomly choosing any of the available exits, it should only choose up or down and only choose one that’s a valid exit
-  //If both are valid, it should pick randomly
 
   can_go(mccormick,south,bakeless);
   can_go(bakeless,north,mccormick);
@@ -99,14 +92,15 @@ int main()
 
   person me("Launy",mccormick,10000);
   install_person(me);
-  person veronica("John",mccormick,2);
+  person veronica("Veronica",mccormick,2);
   install_person(veronica);
   werewolf cujo("Cujo",professors_office_roof,3);
   install_person(cujo);
-  partyanimal spuds("Spuds", bakeless_basement, 8);
+  partyanimal spuds("Spuds", bakeless_basement, 9);
   install_person(spuds);
-  werewolf john("John", bakeless_basement, 3);
-  install_person(john);
+  werewolf charlie("Charlie", bakeless_basement, 5);
+  install_person(charlie);
+  //werewolves do not stay in places like they are supposed to
 
   thing disk("disk");
   install_thing(disk,computer_lab);
@@ -182,6 +176,8 @@ int main()
 			 cout << "After the students look little more than tiny specks of dust, you notice your trajectory is headed towards something." << endl;
 			 cout << "After what seems minutes, the clouds clear and the target is clear.The Moon.That\'s the next chapter in this saga." << endl;
 			 cout << "Congratulations, you won!" << endl;
+			 char c;
+			 cin >> c;
 			 exit(0);
 	 }
      clock();
