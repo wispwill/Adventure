@@ -16,7 +16,8 @@ void partyanimal::eat_person(person *persn)
 		persn->drop(beer);
 		//party animal picks it up
 		take(beer);
-		cout << get_name() << " takes your beer and leaves you alone." << endl;	
+		cout << get_name() << " takes your beer and leaves you alone." << endl;
+		cout << get_name() << " looks content, and starts swaying slightly." << endl;
 	}		
 	else
 	{

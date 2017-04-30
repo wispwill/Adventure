@@ -20,7 +20,7 @@ class person : public named_object
     void clock();
     virtual void act();
     kind get_kind() {return person_obj;}
-	//added by laura
+	//added by Laura
 	bool same_room(string name) const;
 	bool has_thing(string name) const;
 	thing* get_thing(string name);

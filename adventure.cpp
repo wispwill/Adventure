@@ -1,8 +1,11 @@
 // adventure.cpp  a basic text adventure game using objects and inheritance
+// basic structure made by Erik Wynters
+// game completed by Laura Josuweit and Daniel Kilgallon
 
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 const int NUM_DIRECTIONS = 6;
@@ -120,6 +123,20 @@ int main()
   //main loop
   char line[99];
   string command, arg;
+ 
+  //What good is story without a beginning?
+  cout << endl;
+  cout << "After finally finishing your project, you make your way up to McCormick" << endl;
+  cout << "to drop it off in your professor's office." << endl;
+  cout << "The second you walk through the front doors, you realize that in" << endl;
+  cout << "your haste to get this homework done and gone, you left the" << endl;
+  cout << "disk it was on in the Bakeless computer lab!" << endl;
+  cout << "Cursing your forgetfulness, you turn around to head back and get it." << endl;
+  cout << "Suddenly, someone bursts out from the staircase and yells \"IT'S ON THE ROOF!" << endl;
+  cout << "RUUUUUUN!\" before stumbling out through the front doors, screaming." << endl;
+  cout << "What in the world could be going on?" << endl;
+  cout << "........." << endl << endl;
+  //
   me.look();
 
   while (true)
@@ -135,9 +152,11 @@ int main()
 		arg = strtok(NULL," \n");
         me.go_look(string_to_direction(arg));
      }
+	 //fixed by Laura; original did not check if you were in the same room as an object before letting you take it.
      else if (command == "take")
-     { 
+     { //this tokenizes our input, returning the next token, our object name
 	   arg = strtok(NULL," \n");
+	   //check if we are in the room
 	   if (me.same_room(arg))
 		   me.take(string_to_thing(arg));
 	   else
@@ -147,6 +166,7 @@ int main()
 	 {
 		 me.inventory();
 	 }
+	 //
 	 else if (command == "drop")
 	 {
 		 arg = strtok(NULL, " \n");
@@ -179,16 +199,19 @@ int main()
 				 person_check = true;
 		 }
 		 if (disk_check == true && person_check == true) {
+			 cout << endl << "........." << endl << endl;
 			 cout << "The moment the disk hits the floor from your pocket," << endl;
 			 cout << "your jetpack malfunctions and rockets you upwards. " << endl;
 			 cout << "You crash through the roof of the professor's office, sailing through the air. " << endl;
-			 cout << "Bloomsburg students search against the harsh rays of the noon - day sun" << endl;
+			 cout << "Bloomsburg students search against the harsh rays of the noon-day sun" << endl;
 			 cout << "trying to find the source of the commotion." << endl;
 			 cout << "They spot a lone adventurer, having bested the odds, soaring higher and higher." << endl;
-			 cout << "After the students look little more than tiny specks of dust, you notice your" << endl;
-			 cout << "trajectory is headed towards something. After what seems minutes, the clouds clear" << endl;
-			 cout << "and the target is clear.The Moon.That\'s the next chapter in this saga." << endl;
+			 cout << "After the students look like little more than tiny specks of dust, you notice" << endl;
+			 cout << "your trajectory is headed towards something. After what seems minutes, the" << endl;
+			 cout << "clouds part, and the target is clear. The Moon. That\'s the next chapter in this saga." << endl << endl;
 			 cout << "Congratulations, you won!" << endl;
+			 cout << endl << endl << "(input any character and press enter to close the window.)" << endl;
+			
 			 char c;
 			 cin >> c;
 			 exit(0);

@@ -36,7 +36,7 @@ void werewolf::eat_person(person *persn)
 }
 
 void werewolf::act()
-{
+{//modified by Danny and Laura
 	vector<direction> locs = location->get_exits();
 	bool up_check = false;
 	bool down_check = false;
