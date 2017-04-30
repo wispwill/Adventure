@@ -94,21 +94,22 @@ int main()
   install_person(me);
   person veronica("Veronica",mccormick,2);
   install_person(veronica);
+  //UNCOMMENT AND PUT WEREWOLVES IN THEIR PROPER PLACES/////////////////////////////////////////////////////
   werewolf cujo("Cujo",professors_office_roof,3);
   install_person(cujo);
   partyanimal spuds("Spuds", bakeless_basement, 9);
   install_person(spuds);
-  werewolf charlie("Charlie", bakeless_basement, 5);
-  install_person(charlie);
+ // werewolf charlie("Charlie", bakeless_basement, 5);
+ // install_person(charlie);
   //werewolves do not stay in places like they are supposed to
 
   thing disk("disk");
   install_thing(disk,computer_lab);
   thing beer("beer");
   install_thing(beer,professors_office);
-  //created by Laura
+  //created by Danny
   thing jetpack("jetpack");
-  install_thing(jetpack, bakeless_basement);
+  install_thing(jetpack,bakeless_basement);
 
   //main loop
   char line[99];
@@ -145,6 +146,7 @@ int main()
 		 arg = strtok(NULL, " \n");
 		 me.drop(string_to_thing(arg));
 	 }
+	 //added by Danny
 	 else if (command == "fly") {
 		 place* plc = me.get_location();
 		 if (*plc == bakeless_roof && jetpack.owned())
@@ -158,14 +160,16 @@ int main()
        cout << "Time passes" << endl;
      else
        cout << "Unknown command (ignored)." << endl;
-	 if (jetpack.owned()) {
-		 vector<named_object*>::iterator itr = professors_office.get_things().begin();
+	 //Danny and Laura
+	 //win condition check
+	 if (jetpack.owned()&&jetpack.get_owner()->get_name() == "Launy") {
+		 const vector<named_object*>::iterator itr = professors_office.get_things().begin();
 		 bool disk_check;
 		 bool person_check;
 		 while (itr != professors_office.get_things().end()) {
-			 if ((*itr)->get_name() == named_object("disk").get_name())
+			 if ((*itr)->get_name() == "disk")
 				 disk_check = true;
-			 if ((*itr)->get_name() == named_object("Launy").get_name())
+			 if ((*itr)->get_name() == "Launy")
 				 person_check = true;
 		 }
 		 if (disk_check && person_check)

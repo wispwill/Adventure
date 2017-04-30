@@ -41,8 +41,8 @@ bool place::contains_thing(string name) const
 	{
 		if (things[i]->get_name() == name)
 			return true;
-		return false;
 	}
+	return false;
 }
 //
 

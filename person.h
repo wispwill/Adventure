@@ -23,7 +23,7 @@ class person : public named_object
 	//added by laura
 	bool same_room(string name) const;
 	bool has_thing(string name) const;
-	thing* get_thing(string name) const;
+	thing* get_thing(string name);
 	//
   protected:
     static const string greeting;
@@ -103,13 +103,20 @@ void person::drop(thing *thng)
 {
 	if (thng != nullptr)
 	{
-		int i = 0;
 		vector<thing*>::iterator itr = possessions.begin();
 		while (*itr != thng && itr != possessions.end())
 			itr++;
-		possessions.erase(itr);
-		location->add_thing(thng);
-		cout << thng->get_name() << " dropped by " << this->get_name() << endl;
+		//added by Laura
+		if (itr != possessions.end())
+		{
+			possessions.erase(itr);
+			location->add_thing(thng);
+			thng->change_owner(nullptr);
+			cout << thng->get_name() << " dropped by " << this->get_name() << endl;
+		}
+		else
+			cout << "You don't have that." << endl;
+		//
 	}
 	else
 		cout << "You don't have that." << endl;
@@ -171,11 +178,11 @@ bool person::has_thing(string name) const
 	{
 		if (possessions[i]->get_name() == name)
 			return true;
-		return false;
 	}
+	return false;
 }
 
-thing* person::get_thing(string name) const
+thing* person::get_thing(string name)
 {
 	for (int i = 0; i < possessions.size(); i++)
 	{
