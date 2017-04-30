@@ -69,39 +69,45 @@ int main()
   place professors_office("Professor's Office");
   //created by Danny
   place bakeless_roof("Bakeless Roof");
-  place professors_office_roof("Computer Lab Roof");
+  place mccormick_roof("McCormick Roof");
   place quad("Quad");
+  place quad_basement("Quad Basement");
 
   can_go(mccormick,south,bakeless);
   can_go(bakeless,north,mccormick);
+
   can_go(bakeless,up,computer_lab);
   can_go(computer_lab,down,bakeless);
+
   can_go(bakeless,down,bakeless_basement);
   can_go(bakeless_basement,up,bakeless);
+
   can_go(mccormick,up,professors_office);
   can_go(professors_office,down,mccormick);
   //created by Laura
-  can_go(bakeless, up, bakeless_roof);
-  can_go(bakeless_roof, down, bakeless);
-  can_go(computer_lab, up, professors_office_roof);
-  can_go(professors_office_roof, down, computer_lab);
+  can_go(mccormick_roof, down, professors_office);
+  can_go(professors_office, up, mccormick_roof);
+
+  can_go(computer_lab, up, bakeless_roof);
+  can_go(bakeless_roof, down, computer_lab);
+
   can_go(mccormick, south, quad);
   can_go(quad, south, bakeless);
   can_go(bakeless, north, quad);
   can_go(quad, north, mccormick);
+  can_go(quad, down, quad_basement);
+  can_go(quad_basement, up, quad);
 
   person me("Launy",mccormick,10000);
   install_person(me);
   person veronica("Veronica",mccormick,2);
   install_person(veronica);
-  //UNCOMMENT AND PUT WEREWOLVES IN THEIR PROPER PLACES/////////////////////////////////////////////////////
-  werewolf cujo("Cujo",professors_office_roof,3);
+  werewolf cujo("Cujo", mccormick_roof, 3);
   install_person(cujo);
   partyanimal spuds("Spuds", bakeless_basement, 9);
   install_person(spuds);
- // werewolf charlie("Charlie", bakeless_basement, 5);
- // install_person(charlie);
-  //werewolves do not stay in places like they are supposed to
+  werewolf charlie("Charlie", quad_basement, 5);
+  install_person(charlie);
 
   thing disk("disk");
   install_thing(disk,computer_lab);
@@ -150,8 +156,8 @@ int main()
 	 else if (command == "fly") {
 		 place* plc = me.get_location();
 		 if (*plc == bakeless_roof && jetpack.owned())
-			 me.move_to(&professors_office_roof);
-		 else if (*plc == professors_office_roof && jetpack.owned())
+			 me.move_to(&mccormick_roof);
+		 else if (*plc == mccormick_roof && jetpack.owned())
 			 me.move_to(&bakeless_roof);
 		 else
 			 cout << "You flap your arms hard and think light thoughts, but you move nowhere!" << endl;
@@ -162,27 +168,31 @@ int main()
        cout << "Unknown command (ignored)." << endl;
 	 //Danny and Laura
 	 //win condition check
-	 if (jetpack.owned()&&jetpack.get_owner()->get_name() == "Launy") {
-		 const vector<named_object*>::iterator itr = professors_office.get_things().begin();
-		 bool disk_check;
-		 bool person_check;
-		 while (itr != professors_office.get_things().end()) {
-			 if ((*itr)->get_name() == "disk")
+	 if (jetpack.owned() && jetpack.get_owner()->get_name() == "Launy") {
+		 const vector<named_object*> stuff = professors_office.get_things();
+		 bool disk_check = false;
+		 bool person_check = false;
+		 for (int i = 0; i < stuff.size(); ++i) {
+			 if (stuff[i]->get_name() == "disk")
 				 disk_check = true;
-			 if ((*itr)->get_name() == "Launy")
+			 if (stuff[i]->get_name() == "Launy")
 				 person_check = true;
 		 }
-		 if (disk_check && person_check)
-			 cout << "Your jetpack malfunctions and rockets you upwards. " << endl;
+		 if (disk_check == true && person_check == true) {
+			 cout << "The moment the disk hits the floor from your pocket," << endl;
+			 cout << "your jetpack malfunctions and rockets you upwards. " << endl;
 			 cout << "You crash through the roof of the professor's office, sailing through the air. " << endl;
-			 cout << "Bloomsburg students search against the harsh rays of the noon - day sun trying to find the source of the commotion." << endl;
-		     cout << "They spot a lone adventurer, having bested the odds, soaring higher and higher." << endl;
-			 cout << "After the students look little more than tiny specks of dust, you notice your trajectory is headed towards something." << endl;
-			 cout << "After what seems minutes, the clouds clear and the target is clear.The Moon.That\'s the next chapter in this saga." << endl;
+			 cout << "Bloomsburg students search against the harsh rays of the noon - day sun" << endl;
+			 cout << "trying to find the source of the commotion." << endl;
+			 cout << "They spot a lone adventurer, having bested the odds, soaring higher and higher." << endl;
+			 cout << "After the students look little more than tiny specks of dust, you notice your" << endl;
+			 cout << "trajectory is headed towards something. After what seems minutes, the clouds clear" << endl;
+			 cout << "and the target is clear.The Moon.That\'s the next chapter in this saga." << endl;
 			 cout << "Congratulations, you won!" << endl;
 			 char c;
 			 cin >> c;
 			 exit(0);
+		 }
 	 }
      clock();
   }
